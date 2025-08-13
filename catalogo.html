@@ -5,120 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo - Aroma y Tiempo</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #000;
-        color: white;
-        text-align: center;
-    }
-    nav {
-        background-color: #111;
-        padding: 10px 0;
-    }
-    nav a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    nav a:hover {
-        color: #D4AF37;
-    }
-    header {
-        padding: 10px 0;
-    }
-    header h1 {
-        margin: 0;
-    }
-    .catalogo-container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        padding: 20px;
-    }
-    .banner-side {
-        width: 150px;
-        height: 500px;
-        overflow: hidden;
-        border-radius: 10px;
-    }
-    .banner-side img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .productos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        flex: 2;
-    }
-    .producto {
-        background-color: #111;
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-        box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
-    }
-    .producto img {
-        width: 100%;
-        border-radius: 8px;
-    }
-    .producto h3 {
-        margin: 10px 0;
-        font-size: 18px;
-    }
-    .producto p {
-        font-size: 16px;
-        color: #ccc;
-    }
-    button {
-        background-color: #D4AF37;
-        border: none;
-        padding: 10px;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 14px;
-    }
-    button:hover {
-        background-color: #b8952b;
-    }
-    #carrito {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        background-color: #111;
-        border: 1px solid #333;
-        padding: 15px;
-        border-radius: 10px;
-        width: 250px;
-        color: white;
-    }
-    #carrito h4 {
-        margin-top: 0;
-    }
-    footer {
-        background-color: #111;
-        color: white;
-        padding: 10px 0;
-        margin-top: 20px;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: white;
+    text-align: center;
+}
+nav {
+    background-color: #111;
+    padding: 10px 0;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #D4AF37;
+}
+header {
+    padding: 10px 0;
+}
+header h1 {
+    margin: 0;
+}
+.catalogo-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+.banner-side {
+    width: 150px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.banner-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    flex: 2;
+}
+.producto {
+    background-color: #111;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
+}
+.producto img {
+    width: 100%;
+    border-radius: 8px;
+}
+.producto h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+.producto p {
+    font-size: 16px;
+    color: #ccc;
+}
+.producto input[type=number] {
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    margin-top: 5px;
+}
+button {
+    background-color: #D4AF37;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
 
-    /* WhatsApp flotante */
-    .whatsapp-fijo {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 100;
-    }
+/* Carrito desplegable */
+#carrito {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #111;
+    border-left: 1px solid #333;
+    padding: 15px;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+#carrito.open {
+    right: 0;
+}
+#carrito h4 {
+    margin-top: 0;
+    cursor: pointer;
+    user-select: none;
+}
 
-    .whatsapp-fijo img {
-        width: 60px;
-        height: 60px;
-    }
+/* WhatsApp flotante */
+.whatsapp-fijo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+.whatsapp-fijo img {
+    width: 60px;
+    height: 60px;
+}
+
+footer {
+    background-color: #111;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
 </style>
 </head>
 <body>
@@ -148,8 +163,9 @@
     </div>
 </div>
 
+<!-- Carrito desplegable -->
 <div id="carrito">
-    <h4>🛒 Carrito</h4>
+    <h4 onclick="toggleCarrito()">🛒 Carrito (clic para abrir/cerrar)</h4>
     <ul id="listaCarrito"></ul>
     <p><strong>Total:</strong> S/. <span id="total">0</span></p>
 </div>
@@ -178,9 +194,7 @@ const productos = [
 ];
 
 const listaProductos = document.getElementById("listaProductos");
-const listaCarrito = document.getElementById("listaCarrito");
-const totalEl = document.getElementById("total");
-let carrito = [];
+let carrito = {};
 
 function mostrarProductos() {
     productos.forEach((p,index)=>{
@@ -190,27 +204,53 @@ function mostrarProductos() {
             <img src="${p.imagen}" alt="${p.nombre}">
             <h3>${p.nombre}</h3>
             <p>S/. ${p.precio}</p>
+            <input type="number" min="0" value="0" id="cantidad-${index}" onchange="actualizarCantidad(${index})">
             <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
         `;
         listaProductos.appendChild(div);
     });
 }
 
-function agregarAlCarrito(index) {
-    carrito.push(productos[index]);
+function agregarAlCarrito(index){
+    const inputCantidad = document.getElementById(`cantidad-${index}`);
+    let cantidad = parseInt(inputCantidad.value);
+    if(cantidad <= 0) return;
+    if(carrito[index]){
+        carrito[index].cantidad = cantidad;
+    } else {
+        carrito[index] = {...productos[index], cantidad: cantidad};
+    }
     actualizarCarrito();
 }
 
-function actualizarCarrito() {
+function actualizarCantidad(index){
+    const inputCantidad = document.getElementById(`cantidad-${index}`);
+    let cantidad = parseInt(inputCantidad.value);
+    if(cantidad <= 0){
+        delete carrito[index];
+    } else {
+        carrito[index] = {...productos[index], cantidad: cantidad};
+    }
+    actualizarCarrito();
+}
+
+function actualizarCarrito(){
+    const listaCarrito = document.getElementById("listaCarrito");
+    const totalEl = document.getElementById("total");
     listaCarrito.innerHTML = "";
     let total = 0;
-    carrito.forEach(item=>{
+    Object.values(carrito).forEach(item=>{
         const li = document.createElement("li");
-        li.textContent = `${item.nombre} - S/. ${item.precio}`;
+        li.textContent = `${item.nombre} - S/. ${item.precio} x ${item.cantidad}`;
         listaCarrito.appendChild(li);
-        total += item.precio;
+        total += item.precio * item.cantidad;
     });
     totalEl.textContent = total;
+}
+
+function toggleCarrito(){
+    const carritoEl = document.getElementById("carrito");
+    carritoEl.classList.toggle("open");
 }
 
 mostrarProductos();
