@@ -4,59 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosotros - Aroma y Tiempo</title>
+    <!-- Fuente elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #333;
         }
 
-        /* Encabezado con menú */
+        /* Encabezado */
         header {
-            background: #f8f8f8;
-            padding: 10px;
-            text-align: center;
-            border-bottom: 2px solid #ddd;
+            background: #fff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            font-size: 1.5rem;
+            color: #444;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
         }
 
         nav a {
-            margin: 0 15px;
             text-decoration: none;
             color: #333;
-            font-weight: bold;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #a67c52;
         }
 
-        /* Contenedor con imagen de fondo */
+        /* Menú hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #333;
+            margin: 4px 0;
+            border-radius: 2px;
+        }
+
+        /* Portada */
         .fondo-portada {
             position: relative;
-            width: 100%;
             height: 80vh;
-            background-image: url('fondo.jpg'); /* Imagen de fondo */
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        /* Video centrado sobre la imagen */
+        .fondo-portada::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('fondo.jpg') center/cover no-repeat;
+            filter: brightness(0.6);
+            z-index: 1;
+        }
+
         .fondo-portada video {
-            width: 60%;
+            position: relative;
+            z-index: 2;
+            width: 70%;
             max-width: 900px;
             border-radius: 15px;
-            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+            box-shadow: 0px 0px 25px rgba(0,0,0,0.5);
         }
 
         /* Contenido */
         main {
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
         }
 
-        /* Botón WhatsApp flotante */
+        main h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        main p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* WhatsApp flotante */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -65,27 +123,61 @@
             border-radius: 50%;
             padding: 15px;
             z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
 
         .whatsapp-float img {
             width: 40px;
             height: 40px;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background: #fff;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                padding: 10px;
+            }
+            nav.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .fondo-portada video {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Menú -->
+    <!-- Encabezado -->
     <header>
-        <nav>
+        <h1>Aroma y Tiempo</h1>
+        <nav id="menu">
             <a href="index.html">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="catalogo.html">Catálogo</a>
             <a href="contacto.html">Contáctanos</a>
         </nav>
+        <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
-    <!-- Imagen de fondo con video en el centro -->
+    <!-- Portada con video -->
     <div class="fondo-portada">
         <video autoplay muted loop>
             <source src="https://github.com/user-attachments/assets/9c7550af-33eb-483a-ae5c-7c5f0e619696" type="video/mp4">
@@ -93,11 +185,12 @@
         </video>
     </div>
 
-    <!-- Descripción -->
+    <!-- Contenido -->
     <main>
-        <h1>Sobre Nosotros</h1>
-        <p>En Aroma y Tiempo, nos dedicamos a ofrecer perfumes y relojes de la más alta calidad.
-           Nuestra pasión es brindarte productos que combinen estilo, elegancia y personalidad.</p>
+        <h2>Sobre Nosotros</h2>
+        <p>En <strong>Aroma y Tiempo</strong>, nos dedicamos a ofrecer perfumes y relojes de la más alta calidad. 
+        Nuestra pasión es brindarte productos que combinen estilo, elegancia y personalidad, para que cada momento 
+        tenga un aroma y un tiempo especial.</p>
     </main>
 
     <!-- Botón WhatsApp -->
