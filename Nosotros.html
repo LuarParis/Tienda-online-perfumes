@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros - Aromas y Tiempo</title>
+    <title>Nosotros - Perfumes</title>
     <style>
-        body {
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
             font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
+            overflow-x: hidden;
         }
-        /* Menú igual que en index.html */
+
+        /* Menú */
         nav {
-            background-color: #111;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
+            background-color: black;
+            padding: 15px;
+            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
@@ -26,31 +26,51 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
         }
         nav a:hover {
-            color: #ccc;
+            color: gold;
         }
-        /* Video */
+
+        /* Video de fondo */
         .video-container {
             position: relative;
+            height: 100vh;
             width: 100%;
-            height: 100vh; /* pantalla completa */
             overflow: hidden;
         }
         .video-container video {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
             object-fit: cover;
         }
-        /* Contenido */
+
+        /* Contenido sobre el video */
         .content {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            padding: 0 20px;
         }
+        .content h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
         /* Botón flotante WhatsApp */
         .whatsapp-float {
             position: fixed;
@@ -59,16 +79,15 @@
             bottom: 20px;
             right: 20px;
             background-color: #25d366;
-            color: white;
             border-radius: 50%;
             text-align: center;
-            font-size: 30px;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
             z-index: 1001;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            transition: background-color 0.3s ease;
         }
         .whatsapp-float:hover {
             background-color: #20b955;
@@ -85,27 +104,27 @@
         <a href="contacto.html">Contáctanos</a>
     </nav>
 
-    <!-- Video -->
+    <!-- Video de fondo -->
     <div class="video-container">
-        <video autoplay muted loop playsinline>
-            <source src="https://github.com/user-attachments/assets/9c7550af-33eb-483a-ae5c-7c5f0e619696" type="video/mp4">
-            Tu navegador no soporta video HTML5.
+        <video autoplay muted loop>
+            <source src="tu-video.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
         </video>
+        <div class="content">
+            <h1>Sobre Nosotros</h1>
+            <p>
+                Bienvenido a nuestra marca de perfumes exclusivos.  
+                Creamos fragancias únicas inspiradas en la elegancia,  
+                el lujo y la sofisticación para quienes desean destacar.
+            </p>
+        </div>
     </div>
 
-    <!-- Contenido -->
-    <div class="content">
-        <h1>Sobre Nosotros</h1>
-        <p>
-            En Aromas y Tiempo, nos dedicamos a ofrecer perfumes únicos que reflejan elegancia, 
-            distinción y personalidad. Nuestro compromiso es brindar fragancias que acompañen 
-            momentos especiales y dejen huella.
-        </p>
-    </div>
-
-    <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-float">
-        &#x1F4AC;
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.197.297-.768.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-1.611-.922-2.207-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.793.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.002 5.45-4.437 9.884-9.887 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.158 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 0 0 5.708 1.455h.005c6.554 0 11.89-5.335 11.892-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+        </svg>
     </a>
 
 </body>
