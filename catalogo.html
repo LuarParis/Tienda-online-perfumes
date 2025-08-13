@@ -3,48 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - LUAR PARIS</title>
+    <title>Catálogo - Aroma y Tiempo</title>
     <style>
         body {
-            background-color: #000;
-            color: white;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        header {
+            background-color: #fff;
+            color: #000;
             text-align: center;
-            padding: 20px;
-            background-color: #111;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
         }
+
+        nav {
+            background-color: #222;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: gold;
+        }
+
+        header {
+            padding: 10px 0;
+        }
+
+        header img {
+            max-width: 150px;
+        }
+
         .productos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             padding: 20px;
         }
+
         .producto {
-            background-color: #111;
+            background-color: #f9f9f9;
             border-radius: 10px;
             padding: 15px;
             text-align: center;
-            box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
+
         .producto img {
             width: 100%;
             border-radius: 8px;
         }
+
         .producto h3 {
             margin: 10px 0;
             font-size: 18px;
         }
+
         .producto p {
             font-size: 16px;
-            color: #ccc;
+            color: #555;
         }
+
         button {
             background-color: #ff6600;
             border: none;
@@ -54,87 +77,130 @@
             border-radius: 5px;
             font-size: 14px;
         }
+
         button:hover {
             background-color: #e65c00;
         }
+
         #carrito {
             position: fixed;
             right: 20px;
             bottom: 20px;
-            background-color: #111;
-            border: 1px solid #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
             padding: 15px;
             border-radius: 10px;
             width: 250px;
-            color: white;
+            color: #000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
+
         #carrito h4 {
             margin-top: 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>CATÁLOGO - LUAR PARIS</header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
+    </nav>
 
-<div class="productos" id="listaProductos">
-    <!-- Productos de ejemplo -->
-</div>
+    <header>
+        <h1>Catálogo - Aroma y Tiempo</h1>
+        <p>Perfumes y relojes exclusivos para todos los gustos</p>
+    </header>
 
-<div id="carrito">
-    <h4>🛒 Carrito</h4>
-    <ul id="listaCarrito"></ul>
-    <p><strong>Total:</strong> S/. <span id="total">0</span></p>
-</div>
+    <div class="productos" id="listaProductos">
+        <!-- Productos se cargan aquí -->
+    </div>
 
-<script>
-    const productos = [];
-    for (let i = 1; i <= 25; i++) {
-        productos.push({
-            nombre: "Perfume " + i,
-            precio: (80 + i * 2),
-            imagen: "https://via.placeholder.com/200x250?text=Perfume+" + i
-        });
-    }
+    <div id="carrito">
+        <h4>🛒 Carrito</h4>
+        <ul id="listaCarrito"></ul>
+        <p><strong>Total:</strong> S/. <span id="total">0</span></p>
+    </div>
 
-    const listaProductos = document.getElementById("listaProductos");
-    const listaCarrito = document.getElementById("listaCarrito");
-    const totalEl = document.getElementById("total");
-    let carrito = [];
+    <footer>
+        <p>&copy; 2025 Aroma y Tiempo - Todos los derechos reservados</p>
+    </footer>
 
-    function mostrarProductos() {
-        productos.forEach((p, index) => {
-            const div = document.createElement("div");
-            div.classList.add("producto");
-            div.innerHTML = `
-                <img src="${p.imagen}" alt="${p.nombre}">
-                <h3>${p.nombre}</h3>
-                <p>S/. ${p.precio}</p>
-                <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
-            `;
-            listaProductos.appendChild(div);
-        });
-    }
+    <script>
+        const productos = [
+            { nombre: "Aroma de Rosas", precio: 120, imagen: "images/aroma1.jpg" },
+            { nombre: "Tiempo Dorado", precio: 150, imagen: "images/tiempo1.jpg" },
+            { nombre: "Aroma Cítrico", precio: 110, imagen: "images/aroma2.jpg" },
+            { nombre: "Tiempo Noche", precio: 130, imagen: "images/tiempo2.jpg" },
+            { nombre: "Aroma Floral", precio: 140, imagen: "images/aroma3.jpg" },
+            { nombre: "Tiempo Plata", precio: 160, imagen: "images/tiempo3.jpg" },
+            { nombre: "Aroma Vainilla", precio: 115, imagen: "images/aroma4.jpg" },
+            { nombre: "Tiempo Elegante", precio: 155, imagen: "images/tiempo4.jpg" },
+            { nombre: "Aroma Frutal", precio: 125, imagen: "images/aroma5.jpg" },
+            { nombre: "Tiempo Clásico", precio: 150, imagen: "images/tiempo5.jpg" },
+            { nombre: "Aroma Exótico", precio: 135, imagen: "images/aroma6.jpg" },
+            { nombre: "Tiempo Moderno", precio: 165, imagen: "images/tiempo6.jpg" },
+            { nombre: "Aroma Místico", precio: 145, imagen: "images/aroma7.jpg" },
+            { nombre: "Tiempo Minimal", precio: 155, imagen: "images/tiempo7.jpg" },
+            { nombre: "Aroma Dulce", precio: 120, imagen: "images/aroma8.jpg" },
+            { nombre: "Tiempo Vintage", precio: 160, imagen: "images/tiempo8.jpg" },
+            { nombre: "Aroma Fresco", precio: 130, imagen: "images/aroma9.jpg" },
+            { nombre: "Tiempo Sport", precio: 140, imagen: "images/tiempo9.jpg" },
+            { nombre: "Aroma Amaderado", precio: 150, imagen: "images/aroma10.jpg" },
+            { nombre: "Tiempo Royal", precio: 170, imagen: "images/tiempo10.jpg" },
+            { nombre: "Aroma Marino", precio: 125, imagen: "images/aroma11.jpg" },
+            { nombre: "Tiempo Urbano", precio: 160, imagen: "images/tiempo11.jpg" },
+            { nombre: "Aroma Noche", precio: 135, imagen: "images/aroma12.jpg" },
+            { nombre: "Tiempo Casual", precio: 145, imagen: "images/tiempo12.jpg" },
+            { nombre: "Aroma Jardín", precio: 140, imagen: "images/aroma13.jpg" }
+        ];
 
-    function agregarAlCarrito(index) {
-        carrito.push(productos[index]);
-        actualizarCarrito();
-    }
+        const listaProductos = document.getElementById("listaProductos");
+        const listaCarrito = document.getElementById("listaCarrito");
+        const totalEl = document.getElementById("total");
+        let carrito = [];
 
-    function actualizarCarrito() {
-        listaCarrito.innerHTML = "";
-        let total = 0;
-        carrito.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = `${item.nombre} - S/. ${item.precio}`;
-            listaCarrito.appendChild(li);
-            total += item.precio;
-        });
-        totalEl.textContent = total;
-    }
+        function mostrarProductos() {
+            productos.forEach((p, index) => {
+                const div = document.createElement("div");
+                div.classList.add("producto");
+                div.innerHTML = `
+                    <img src="${p.imagen}" alt="${p.nombre}">
+                    <h3>${p.nombre}</h3>
+                    <p>S/. ${p.precio}</p>
+                    <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
+                `;
+                listaProductos.appendChild(div);
+            });
+        }
 
-    mostrarProductos();
-</script>
+        function agregarAlCarrito(index) {
+            carrito.push(productos[index]);
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            listaCarrito.innerHTML = "";
+            let total = 0;
+            carrito.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.nombre} - S/. ${item.precio}`;
+                listaCarrito.appendChild(li);
+                total += item.precio;
+            });
+            totalEl.textContent = total;
+        }
+
+        mostrarProductos();
+    </script>
 
 </body>
 </html>
