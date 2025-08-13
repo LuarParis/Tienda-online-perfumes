@@ -51,6 +51,7 @@
         .banner img {
             height: 100%;
             object-fit: contain;
+            max-width: 100%;
         }
 
         .banner-side {
@@ -63,6 +64,19 @@
             flex: 2;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* Ajuste para móviles */
+        @media (max-width: 768px) {
+            .banner {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .banner img {
+                width: 100%;
+                height: auto;
+            }
         }
 
         .whatsapp-fijo {
@@ -87,11 +101,10 @@
 </head>
 <body>
 
-    
     <nav>
         <a href="index.html">Inicio</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="catalogo.html">Catálogo</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
     </nav>
 
     <!-- Banner con imágenes laterales -->
