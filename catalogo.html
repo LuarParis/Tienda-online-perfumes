@@ -112,8 +112,26 @@ button {
 }
 #carrito h4 {
     margin-top: 0;
-    cursor: pointer;
     user-select: none;
+}
+
+/* Botón flecha para abrir/cerrar carrito */
+#toggleCarritoBtn {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #D4AF37;
+    color: #111;
+    border: none;
+    padding: 10px 5px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    z-index: 1100;
+    font-weight: bold;
+}
+#toggleCarritoBtn:hover {
+    background-color: #b8952b;
 }
 
 /* WhatsApp flotante */
@@ -165,10 +183,13 @@ footer {
 
 <!-- Carrito desplegable -->
 <div id="carrito">
-    <h4 onclick="toggleCarrito()">🛒 Carrito (clic para abrir/cerrar)</h4>
+    <h4>🛒 Carrito</h4>
     <ul id="listaCarrito"></ul>
     <p><strong>Total:</strong> S/. <span id="total">0</span></p>
 </div>
+
+<!-- Botón para abrir/cerrar carrito -->
+<button id="toggleCarritoBtn" onclick="toggleCarrito()">⮜</button>
 
 <!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/51933027401" target="_blank" class="whatsapp-fijo">
@@ -250,7 +271,13 @@ function actualizarCarrito(){
 
 function toggleCarrito(){
     const carritoEl = document.getElementById("carrito");
+    const btn = document.getElementById("toggleCarritoBtn");
     carritoEl.classList.toggle("open");
+    if(carritoEl.classList.contains("open")){
+        btn.textContent = "⮞";
+    } else {
+        btn.textContent = "⮜";
+    }
 }
 
 mostrarProductos();
