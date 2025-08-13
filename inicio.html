@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página en GitHub</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Encabezado con logo */
+        header {
+            background: #f8f8f8;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        header img {
+            max-width: 200px;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 20px;
+            min-height: 70vh;
+            text-align: center;
+        }
+
+        /* Barra inferior */
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 30px;
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .whatsapp-float img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo -->
+    <header>
+        <img src="https://via.placeholder.com/200x80?text=LOGO" alt="Mi Logo">
+    </header>
+
+    <!-- Contenido -->
+    <main>
+        <h1>Bienvenido a mi página</h1>
+        <p>Este es el contenido principal. Aquí puedes poner imágenes, texto, catálogo, etc.</p>
+    </main>
+
+    <!-- Barra inferior -->
+    <footer>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contáctanos</a>
+        <a href="catalogo.html">Catálogo</a>
+    </footer>
+
+    <!-- Botón WhatsApp -->
+    <a href="https://wa.me/51999999999" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+</body>
+</html>
