@@ -6,76 +6,115 @@
     <title>Aromas y Tiempo</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: white;
-        }
-
-        /* Contenedor de la portada */
-        .portada-contenedor {
-            display: flex;
-            width: 100%;
-            height: 80vh; /* 80% del alto de la pantalla */
-        }
-
-        /* Imágenes laterales */
-        .portada-lateral {
-            width: 20%;
-            object-fit: cover; /* Llenar sin distorsionar */
-        }
-
-        /* Imagen central */
-        .portada-central {
-            width: 60%;
-            object-fit: contain; /* Mostrar completa */
-            background-color: #000; /* Fondo negro por si sobra espacio */
-        }
-
-        /* Texto debajo de la portada */
-        .contenido {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
             text-align: center;
-            padding: 20px;
         }
 
-        /* Botón de WhatsApp */
+        header {
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-width: 150px;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: gold;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .banner img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .banner-side {
+            flex: 1;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-center {
+            flex: 2;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .whatsapp-fijo {
             position: fixed;
             bottom: 20px;
             right: 20px;
+            z-index: 100;
+        }
+
+        .whatsapp-fijo img {
             width: 60px;
             height: 60px;
         }
 
-        .whatsapp-fijo img {
-            width: 100%;
-            height: 100%;
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Portada con tres imágenes -->
-    <div class="portada-contenedor">
-        <!-- Imagen izquierda -->
-        <img src="izquierda.png" class="portada-lateral" alt="Imagen izquierda">
+    <header>
+        <img src="logo.png" alt="Mi Logo">
+    </header>
 
-        <!-- Imagen central -->
-        <img src="portada.png" class="portada-central" alt="Portada central">
+    <nav>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#contacto">Contáctanos</a>
+    </nav>
 
-        <!-- Imagen derecha -->
-        <img src="derecha.png" class="portada-lateral" alt="Imagen derecha">
+    <!-- Banner con imágenes laterales -->
+    <div class="banner">
+        <img src="lateral1.jpg" alt="Imagen Lateral Izquierda" class="banner-side">
+        <img src="portada.jpg" alt="Imagen Central" class="banner-center">
+        <img src="lateral2.jpg" alt="Imagen Lateral Derecha" class="banner-side">
     </div>
 
-    <!-- Texto debajo -->
-    <div class="contenido">
-        <h2>Bienvenido a Aroma y Tiempo</h2>
-        <p>Perfumes y relojes exclusivos para todos los gustos.</p>
-    </div>
+    <h2>Bienvenido a Aroma y Tiempo</h2>
+    <p>Perfumes y relojes exclusivos para todos los gustos.</p>
 
-    <!-- Botón WhatsApp -->
+    <!-- Botón de WhatsApp -->
     <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-fijo">
-        <img src="whatsapp.png" alt="WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
+
+    <footer>
+        <p>&copy; 2025 Aromas y Tiempo - Todos los derechos reservados</p>
+    </footer>
 
 </body>
 </html>
