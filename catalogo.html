@@ -1,205 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Aroma y Tiempo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: white;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #111;
-            padding: 10px 0;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #D4AF37; /* dorado */
-        }
-
-        header {
-            padding: 10px 0;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        .productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .producto {
-            background-color: #111;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
-        }
-
-        .producto img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .producto h3 {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-
-        .producto p {
-            font-size: 16px;
-            color: #ccc;
-        }
-
-        button {
-            background-color: #D4AF37; /* Dorado */
-            border: none;
-            padding: 10px;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        button:hover {
-            background-color: #b8952b; /* Dorado oscuro */
-        }
-
-        #carrito {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background-color: #111;
-            border: 1px solid #333;
-            padding: 15px;
-            border-radius: 10px;
-            width: 250px;
-            color: white;
-        }
-
-        #carrito h4 {
-            margin-top: 0;
-        }
-
-        footer {
-            background-color: #111;
-            color: white;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo - Aroma y Tiempo</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: white;
+        text-align: center;
+    }
+    nav {
+        background-color: #111;
+        padding: 10px 0;
+    }
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    nav a:hover {
+        color: #D4AF37;
+    }
+    header {
+        padding: 10px 0;
+    }
+    header h1 {
+        margin: 0;
+    }
+    .catalogo-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px;
+    }
+    .banner-side {
+        width: 150px;
+        height: 500px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .banner-side img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .productos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        flex: 2;
+    }
+    .producto {
+        background-color: #111;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
+    }
+    .producto img {
+        width: 100%;
+        border-radius: 8px;
+    }
+    .producto h3 {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+    .producto p {
+        font-size: 16px;
+        color: #ccc;
+    }
+    button {
+        background-color: #D4AF37;
+        border: none;
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    button:hover {
+        background-color: #b8952b;
+    }
+    #carrito {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: #111;
+        border: 1px solid #333;
+        padding: 15px;
+        border-radius: 10px;
+        width: 250px;
+        color: white;
+    }
+    #carrito h4 {
+        margin-top: 0;
+    }
+    footer {
+        background-color: #111;
+        color: white;
+        padding: 10px 0;
+        margin-top: 20px;
+    }
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="catalogo.html">Catálogo</a>
-    </nav>
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="catalogo.html">Catálogo</a>
+</nav>
 
-    <header>
-        <h1>Catálogo - Aroma y Tiempo</h1>
-        <p>Perfumes y relojes exclusivos</p>
-    </header>
+<header>
+    <h1>Catálogo - Aroma y Tiempo</h1>
+    <p>Perfumes y relojes exclusivos</p>
+</header>
+
+<div class="catalogo-container">
+    <div class="banner-side">
+        <img id="slider-left" src="images/banner1.jpg" alt="Banner Izquierdo">
+    </div>
 
     <div class="productos" id="listaProductos">
         <!-- Productos se cargan aquí -->
     </div>
 
-    <div id="carrito">
-        <h4>🛒 Carrito</h4>
-        <ul id="listaCarrito"></ul>
-        <p><strong>Total:</strong> S/. <span id="total">0</span></p>
+    <div class="banner-side">
+        <img id="slider-right" src="images/banner2.jpg" alt="Banner Derecho">
     </div>
+</div>
 
-    <footer>
-        <p>&copy; 2025 Aroma y Tiempo - Todos los derechos reservados</p>
-    </footer>
+<div id="carrito">
+    <h4>🛒 Carrito</h4>
+    <ul id="listaCarrito"></ul>
+    <p><strong>Total:</strong> S/. <span id="total">0</span></p>
+</div>
 
-    <script>
-        const productos = [
-            { nombre: "Aroma de Rosas", precio: 120, imagen: "images/aroma1.jpg" },
-            { nombre: "Tiempo Dorado", precio: 150, imagen: "images/tiempo1.jpg" },
-            { nombre: "Aroma Cítrico", precio: 110, imagen: "images/aroma2.jpg" },
-            { nombre: "Tiempo Noche", precio: 130, imagen: "images/tiempo2.jpg" },
-            { nombre: "Aroma Floral", precio: 140, imagen: "images/aroma3.jpg" },
-            { nombre: "Tiempo Plata", precio: 160, imagen: "images/tiempo3.jpg" },
-            { nombre: "Aroma Vainilla", precio: 115, imagen: "images/aroma4.jpg" },
-            { nombre: "Tiempo Elegante", precio: 155, imagen: "images/tiempo4.jpg" },
-            { nombre: "Aroma Frutal", precio: 125, imagen: "images/aroma5.jpg" },
-            { nombre: "Tiempo Clásico", precio: 150, imagen: "images/tiempo5.jpg" },
-            { nombre: "Aroma Exótico", precio: 135, imagen: "images/aroma6.jpg" },
-            { nombre: "Tiempo Moderno", precio: 165, imagen: "images/tiempo6.jpg" },
-            { nombre: "Aroma Místico", precio: 145, imagen: "images/aroma7.jpg" },
-            { nombre: "Tiempo Minimal", precio: 155, imagen: "images/tiempo7.jpg" },
-            { nombre: "Aroma Dulce", precio: 120, imagen: "images/aroma8.jpg" },
-            { nombre: "Tiempo Vintage", precio: 160, imagen: "images/tiempo8.jpg" },
-            { nombre: "Aroma Fresco", precio: 130, imagen: "images/aroma9.jpg" },
-            { nombre: "Tiempo Sport", precio: 140, imagen: "images/tiempo9.jpg" },
-            { nombre: "Aroma Amaderado", precio: 150, imagen: "images/aroma10.jpg" },
-            { nombre: "Tiempo Royal", precio: 170, imagen: "images/tiempo10.jpg" },
-            { nombre: "Aroma Marino", precio: 125, imagen: "images/aroma11.jpg" },
-            { nombre: "Tiempo Urbano", precio: 160, imagen: "images/tiempo11.jpg" },
-            { nombre: "Aroma Noche", precio: 135, imagen: "images/aroma12.jpg" },
-            { nombre: "Tiempo Casual", precio: 145, imagen: "images/tiempo12.jpg" },
-            { nombre: "Aroma Jardín", precio: 140, imagen: "images/aroma13.jpg" }
-        ];
+<footer>
+    <p>&copy; 2025 Aroma y Tiempo - Todos los derechos reservados</p>
+</footer>
 
-        const listaProductos = document.getElementById("listaProductos");
-        const listaCarrito = document.getElementById("listaCarrito");
-        const totalEl = document.getElementById("total");
-        let carrito = [];
+<script>
+const productos = [
+    { nombre: "Aroma de Rosas", precio: 120, imagen: "images/aroma1.jpg" },
+    { nombre: "Tiempo Dorado", precio: 150, imagen: "images/tiempo1.jpg" },
+    { nombre: "Aroma Cítrico", precio: 110, imagen: "images/aroma2.jpg" },
+    { nombre: "Tiempo Noche", precio: 130, imagen: "images/tiempo2.jpg" },
+    { nombre: "Aroma Floral", precio: 140, imagen: "images/aroma3.jpg" },
+    { nombre: "Tiempo Plata", precio: 160, imagen: "images/tiempo3.jpg" },
+    { nombre: "Aroma Vainilla", precio: 115, imagen: "images/aroma4.jpg" },
+    { nombre: "Tiempo Elegante", precio: 155, imagen: "images/tiempo4.jpg" },
+    { nombre: "Aroma Frutal", precio: 125, imagen: "images/aroma5.jpg" },
+    { nombre: "Tiempo Clásico", precio: 150, imagen: "images/tiempo5.jpg" }
+];
 
-        function mostrarProductos() {
-            productos.forEach((p, index) => {
-                const div = document.createElement("div");
-                div.classList.add("producto");
-                div.innerHTML = `
-                    <img src="${p.imagen}" alt="${p.nombre}">
-                    <h3>${p.nombre}</h3>
-                    <p>S/. ${p.precio}</p>
-                    <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
-                `;
-                listaProductos.appendChild(div);
-            });
-        }
+const listaProductos = document.getElementById("listaProductos");
+const listaCarrito = document.getElementById("listaCarrito");
+const totalEl = document.getElementById("total");
+let carrito = [];
 
-        function agregarAlCarrito(index) {
-            carrito.push(productos[index]);
-            actualizarCarrito();
-        }
+function mostrarProductos() {
+    productos.forEach((p,index)=>{
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+            <img src="${p.imagen}" alt="${p.nombre}">
+            <h3>${p.nombre}</h3>
+            <p>S/. ${p.precio}</p>
+            <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
+        `;
+        listaProductos.appendChild(div);
+    });
+}
 
-        function actualizarCarrito() {
-            listaCarrito.innerHTML = "";
-            let total = 0;
-            carrito.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = `${item.nombre} - S/. ${item.precio}`;
-                listaCarrito.appendChild(li);
-                total += item.precio;
-            });
-            totalEl.textContent = total;
-        }
+function agregarAlCarrito(index) {
+    carrito.push(productos[index]);
+    actualizarCarrito();
+}
 
-        mostrarProductos();
-    </script>
+function actualizarCarrito() {
+    listaCarrito.innerHTML = "";
+    let total = 0;
+    carrito.forEach(item=>{
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - S/. ${item.precio}`;
+        listaCarrito.appendChild(li);
+        total += item.precio;
+    });
+    totalEl.textContent = total;
+}
+
+mostrarProductos();
+
+// Slider lateral
+const bannersLeft = ["images/banner1.jpg","images/banner3.jpg","images/banner5.jpg"];
+const bannersRight = ["images/banner2.jpg","images/banner4.jpg","images/banner6.jpg"];
+let idxLeft = 0;
+let idxRight = 0;
+const sliderLeft = document.getElementById("slider-left");
+const sliderRight = document.getElementById("slider-right");
+
+setInterval(()=>{
+    idxLeft = (idxLeft+1)%bannersLeft.length;
+    sliderLeft.src = bannersLeft[idxLeft];
+    idxRight = (idxRight+1)%bannersRight.length;
+    sliderRight.src = bannersRight[idxRight];
+},3000);
+</script>
 
 </body>
 </html>
