@@ -186,6 +186,8 @@ footer {
     <h4>🛒 Carrito</h4>
     <ul id="listaCarrito"></ul>
     <p><strong>Total:</strong> S/. <span id="total">0</span></p>
+    <!-- Botón Hacer Pedido dentro del carrito -->
+    <button style="background-color:#D4AF37; margin-top:10px;" onclick="hacerPedido()">Hacer Pedido</button>
 </div>
 
 <!-- Botón para abrir/cerrar carrito -->
@@ -278,6 +280,50 @@ function toggleCarrito(){
     } else {
         btn.textContent = "⮜";
     }
+}
+
+// Función para hacer pedido por WhatsApp
+function hacerPedido() {
+    if(Object.keys(carrito).length === 0){
+        alert("Tu carrito está vacío");
+        return;
+    }
+
+    // Crear mensaje con productos
+    let mensaje = "Hola, vengo de la página web y quiero estos productos:\n\n";
+    let total = 0;
+    Object.values(carrito).forEach(item=>{
+        mensaje += `${item.nombre} - Cantidad: ${item.cantidad} - Precio unitario: S/. ${item.precio}\n`;
+        total += item.precio * item.cantidad;
+    });
+    mensaje += `\nTotal a pagar: S/. ${total}`;
+
+    // Mostrar mensaje de pantalla completa
+    const overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.backgroundColor = "rgba(0,0,0,0.95)";
+    overlay.style.color = "#D4AF37";
+    overlay.style.fontSize = "24px";
+    overlay.style.display = "flex";
+    overlay.style.justifyContent = "center";
+    overlay.style.alignItems = "center";
+    overlay.style.textAlign = "center";
+    overlay.style.padding = "20px";
+    overlay.style.zIndex = 2000;
+    overlay.innerHTML = "Gracias por tu preferencia<br>Regresa pronto";
+    document.body.appendChild(overlay);
+
+    // Esperar 2 segundos antes de abrir WhatsApp
+    setTimeout(()=>{
+        document.body.removeChild(overlay);
+        // Abrir WhatsApp con mensaje
+        const url = "https://wa.me/51933027401?text=" + encodeURIComponent(mensaje);
+        window.open(url,"_blank");
+    },2000);
 }
 
 mostrarProductos();
