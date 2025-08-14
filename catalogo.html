@@ -270,66 +270,16 @@ footer {
 
 <script>
 const productos = [
-    {
-        nombre: "Khamrah Dukhan",
-        precio: 165,
-        descripcion: "Fragancia intensa y duradera, con notas de madera y especias.",
-        imagenes: ["images/aroma1.jpg", "images/aroma1_2.jpg", "images/aroma1_3.jpg"]
-    },
-    {
-        nombre: "Tiempo Dorado",
-        precio: 150,
-        descripcion: "Reloj elegante con detalles dorados y correa de cuero.",
-        imagenes: ["images/tiempo1.jpg", "images/tiempo1_2.jpg", "images/tiempo1_3.jpg"]
-    },
-    {
-        nombre: "Aroma Cítrico",
-        precio: 110,
-        descripcion: "Notas frescas y revitalizantes de cítricos naturales.",
-        imagenes: ["images/aroma2.jpg", "images/aroma2_2.jpg", "images/aroma2_3.jpg"]
-    },
-    {
-        nombre: "Tiempo Noche",
-        precio: 130,
-        descripcion: "Reloj sofisticado ideal para eventos nocturnos.",
-        imagenes: ["images/tiempo2.jpg", "images/tiempo2_2.jpg", "images/tiempo2_3.jpg"]
-    },
-    {
-        nombre: "Aroma Floral",
-        precio: 140,
-        descripcion: "Mezcla de flores frescas que cautivan los sentidos.",
-        imagenes: ["images/aroma3.jpg", "images/aroma3_2.jpg", "images/aroma3_3.jpg"]
-    },
-    {
-        nombre: "Tiempo Plata",
-        precio: 160,
-        descripcion: "Reloj clásico con acabado plateado y correa elegante.",
-        imagenes: ["images/tiempo3.jpg", "images/tiempo3_2.jpg", "images/tiempo3_3.jpg"]
-    },
-    {
-        nombre: "Aroma Vainilla",
-        precio: 115,
-        descripcion: "Dulce y envolvente aroma a vainilla natural.",
-        imagenes: ["images/aroma4.jpg", "images/aroma4_2.jpg", "images/aroma4_3.jpg"]
-    },
-    {
-        nombre: "Tiempo Elegante",
-        precio: 155,
-        descripcion: "Reloj moderno con detalles elegantes y correa negra.",
-        imagenes: ["images/tiempo4.jpg", "images/tiempo4_2.jpg", "images/tiempo4_3.jpg"]
-    },
-    {
-        nombre: "Aroma Frutal",
-        precio: 125,
-        descripcion: "Fragancia afrutada que combina frescura y dulzura.",
-        imagenes: ["images/aroma5.jpg", "images/aroma5_2.jpg", "images/aroma5_3.jpg"]
-    },
-    {
-        nombre: "Tiempo Clásico",
-        precio: 150,
-        descripcion: "Reloj con diseño atemporal y correa de cuero marrón.",
-        imagenes: ["images/tiempo5.jpg", "images/tiempo5_2.jpg", "images/tiempo5_3.jpg"]
-    }
+    { nombre: "Khamrah Dukhan", precio: 165, descripcion: "Fragancia intensa y duradera.", imagenes: ["images/aroma1.jpg","images/aroma1_2.jpg","images/aroma1_3.jpg"] },
+    { nombre: "Tiempo Dorado", precio: 150, descripcion: "Reloj elegante con detalles dorados.", imagenes: ["images/tiempo1.jpg","images/tiempo1_2.jpg","images/tiempo1_3.jpg"] },
+    { nombre: "Aroma Cítrico", precio: 110, descripcion: "Notas frescas y revitalizantes de cítricos.", imagenes: ["images/aroma2.jpg","images/aroma2_2.jpg","images/aroma2_3.jpg"] },
+    { nombre: "Tiempo Noche", precio: 130, descripcion: "Reloj sofisticado ideal para eventos nocturnos.", imagenes: ["images/tiempo2.jpg","images/tiempo2_2.jpg","images/tiempo2_3.jpg"] },
+    { nombre: "Aroma Floral", precio: 140, descripcion: "Mezcla de flores frescas que cautivan los sentidos.", imagenes: ["images/aroma3.jpg","images/aroma3_2.jpg","images/aroma3_3.jpg"] },
+    { nombre: "Tiempo Plata", precio: 160, descripcion: "Reloj clásico con acabado plateado.", imagenes: ["images/tiempo3.jpg","images/tiempo3_2.jpg","images/tiempo3_3.jpg"] },
+    { nombre: "Aroma Vainilla", precio: 115, descripcion: "Dulce y envolvente aroma a vainilla.", imagenes: ["images/aroma4.jpg","images/aroma4_2.jpg","images/aroma4_3.jpg"] },
+    { nombre: "Tiempo Elegante", precio: 155, descripcion: "Reloj moderno con detalles elegantes.", imagenes: ["images/tiempo4.jpg","images/tiempo4_2.jpg","images/tiempo4_3.jpg"] },
+    { nombre: "Aroma Frutal", precio: 125, descripcion: "Fragancia afrutada que combina frescura y dulzura.", imagenes: ["images/aroma5.jpg","images/aroma5_2.jpg","images/aroma5_3.jpg"] },
+    { nombre: "Tiempo Clásico", precio: 150, descripcion: "Reloj con diseño atemporal y correa de cuero.", imagenes: ["images/tiempo5.jpg","images/tiempo5_2.jpg","images/tiempo5_3.jpg"] }
 ];
 
 const listaProductos = document.getElementById("listaProductos");
@@ -405,4 +355,79 @@ function hacerPedido() {
     mensaje += `\nTotal a pagar: S/. ${total}`;
 
     const overlay = document.createElement("div");
-    overlay.style.position =
+    overlay.style.position = "fixed";
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.backgroundColor = "rgba(0,0,0,0.95)";
+    overlay.style.color = "#D4AF37";
+    overlay.style.fontSize = "24px";
+    overlay.style.display = "flex";
+    overlay.style.justifyContent = "center";
+    overlay.style.alignItems = "center";
+    overlay.style.textAlign = "center";
+    overlay.style.padding = "20px";
+    overlay.style.zIndex = 2000;
+    overlay.innerHTML = "Gracias por tu preferencia<br>Regresa pronto";
+    document.body.appendChild(overlay);
+
+    setTimeout(()=>{
+        document.body.removeChild(overlay);
+        const url = "https://wa.me/51933027401?text=" + encodeURIComponent(mensaje);
+        window.open(url,"_blank");
+    },2000);
+}
+
+// Modal
+function abrirModal(index){
+    const producto = productos[index];
+    document.getElementById("modalNombre").textContent = producto.nombre;
+    document.getElementById("modalDescripcion").textContent = producto.descripcion;
+    document.getElementById("modalPrecio").textContent = producto.precio;
+    document.getElementById("modalCantidad").value = carrito[index]?.cantidad || 1;
+
+    document.getElementById("modalImg1").src = producto.imagenes[0];
+    document.getElementById("modalImg2").src = producto.imagenes[1];
+    document.getElementById("modalImg3").src = producto.imagenes[2];
+
+    document.getElementById("modalProducto").style.display = "flex";
+    document.getElementById("modalProducto").dataset.index = index;
+}
+
+function cerrarModal(){
+    document.getElementById("modalProducto").style.display = "none";
+}
+
+function agregarAlCarritoModal(){
+    const index = document.getElementById("modalProducto").dataset.index;
+    const cantidad = parseInt(document.getElementById("modalCantidad").value);
+    if(cantidad <= 0){
+        alert("Ingresa una cantidad válida");
+        return;
+    }
+    carrito[index] = {...productos[index], cantidad: cantidad};
+    document.getElementById(`cantidad-${index}`).value = cantidad;
+    actualizarCarrito();
+    cerrarModal();
+}
+
+mostrarProductos();
+
+// Slider lateral
+const bannersLeft = ["images/banner1.jpg","images/banner3.jpg","images/banner5.jpg"];
+const bannersRight = ["images/banner2.jpg","images/banner4.jpg","images/banner6.jpg"];
+let idxLeft = 0;
+let idxRight = 0;
+const sliderLeft = document.getElementById("slider-left");
+const sliderRight = document.getElementById("slider-right");
+
+setInterval(()=>{
+    idxLeft = (idxLeft+1)%bannersLeft.length;
+    sliderLeft.src = bannersLeft[idxLeft];
+    idxRight = (idxRight+1)%bannersRight.length;
+    sliderRight.src = bannersRight[idxRight];
+},3000);
+</script>
+</body>
+</html>
