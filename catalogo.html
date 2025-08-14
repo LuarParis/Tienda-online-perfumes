@@ -152,6 +152,53 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
 }
+
+/* Modal producto */
+#modalProducto {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-color: rgba(0,0,0,0.95);
+    color:white;
+    z-index:3000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+#modalProducto .modal-content {
+    background-color:#111;
+    border-radius:10px;
+    padding:20px;
+    max-width:800px;
+    width:100%;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+#modalProducto .modal-content img {
+    width:100%;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+#modalProducto .modal-info {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+#modalProducto .modal-info input[type=number] {
+    width:60px;
+    padding:5px;
+    border-radius:5px;
+    border:none;
+    text-align:center;
+    margin-top:5px;
+}
+#modalProducto .modal-info button {
+    margin-top:10px;
+}
 </style>
 </head>
 <body>
@@ -186,7 +233,6 @@ footer {
     <h4>🛒 Carrito</h4>
     <ul id="listaCarrito"></ul>
     <p><strong>Total:</strong> S/. <span id="total">0</span></p>
-    <!-- Botón Hacer Pedido dentro del carrito -->
     <button style="background-color:#D4AF37; margin-top:10px;" onclick="hacerPedido()">Hacer Pedido</button>
 </div>
 
@@ -197,6 +243,25 @@ footer {
 <a href="https://wa.me/51933027401" target="_blank" class="whatsapp-fijo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
+
+<!-- Modal de producto -->
+<div id="modalProducto">
+    <div class="modal-content">
+        <div class="modal-imagenes" style="flex:1;">
+            <img id="modalImg1" src="">
+            <img id="modalImg2" src="">
+            <img id="modalImg3" src="">
+        </div>
+        <div class="modal-info">
+            <h2 id="modalNombre"></h2>
+            <p id="modalDescripcion" style="color:#ccc;">Descripción del producto aquí</p>
+            <p><strong>Precio: </strong>S/. <span id="modalPrecio"></span></p>
+            <input type="number" id="modalCantidad" min="0" value="1">
+            <button onclick="agregarAlCarritoModal()">Agregar al carrito</button>
+            <button onclick="cerrarModal()" style="background-color:#333;">Cerrar</button>
+        </div>
+    </div>
+</div>
 
 <footer>
     <p>&copy; 2025 Aroma y Tiempo - Todos los derechos reservados</p>
@@ -225,7 +290,7 @@ function mostrarProductos() {
         div.classList.add("producto");
         div.innerHTML = `
             <img src="${p.imagen}" alt="${p.nombre}">
-            <h3>${p.nombre}</h3>
+            <h3 style="cursor:pointer; color:#D4AF37;" onclick="abrirModal(${index})">${p.nombre}</h3>
             <p>S/. ${p.precio}</p>
             <input type="number" min="0" value="0" id="cantidad-${index}" onchange="actualizarCantidad(${index})">
             <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
@@ -289,7 +354,6 @@ function hacerPedido() {
         return;
     }
 
-    // Crear mensaje con productos
     let mensaje = "Hola, vengo de la página web y quiero estos productos:\n\n";
     let total = 0;
     Object.values(carrito).forEach(item=>{
@@ -298,7 +362,6 @@ function hacerPedido() {
     });
     mensaje += `\nTotal a pagar: S/. ${total}`;
 
-    // Mostrar mensaje de pantalla completa
     const overlay = document.createElement("div");
     overlay.style.position = "fixed";
     overlay.style.top = 0;
@@ -317,13 +380,43 @@ function hacerPedido() {
     overlay.innerHTML = "Gracias por tu preferencia<br>Regresa pronto";
     document.body.appendChild(overlay);
 
-    // Esperar 2 segundos antes de abrir WhatsApp
     setTimeout(()=>{
         document.body.removeChild(overlay);
-        // Abrir WhatsApp con mensaje
         const url = "https://wa.me/51933027401?text=" + encodeURIComponent(mensaje);
         window.open(url,"_blank");
     },2000);
+}
+
+// Funciones del modal
+function abrirModal(index){
+    const producto = productos[index];
+    document.getElementById("modalNombre").textContent = producto.nombre;
+    document.getElementById("modalDescripcion").textContent = "Aquí va la descripción del producto.";
+    document.getElementById("modalPrecio").textContent = producto.precio;
+    document.getElementById("modalCantidad").value = carrito[index]?.cantidad || 1;
+
+    document.getElementById("modalImg1").src = producto.imagen;
+    document.getElementById("modalImg2").src = producto.imagen;
+    document.getElementById("modalImg3").src = producto.imagen;
+
+    document.getElementById("modalProducto").style.display = "flex";
+    document.getElementById("modalProducto").dataset.index = index;
+}
+
+function cerrarModal(){
+    document.getElementById("modalProducto").style.display = "none";
+}
+
+function agregarAlCarritoModal(){
+    const index = document.getElementById("modalProducto").dataset.index;
+    const cantidad = parseInt(document.getElementById("modalCantidad").value);
+    if(cantidad <= 0){
+        alert("Ingresa una cantidad válida");
+        return;
+    }
+    carrito[index] = {...productos[index], cantidad: cantidad};
+    actualizarCarrito();
+    cerrarModal();
 }
 
 mostrarProductos();
@@ -337,12 +430,4 @@ const sliderLeft = document.getElementById("slider-left");
 const sliderRight = document.getElementById("slider-right");
 
 setInterval(()=>{
-    idxLeft = (idxLeft+1)%bannersLeft.length;
-    sliderLeft.src = bannersLeft[idxLeft];
-    idxRight = (idxRight+1)%bannersRight.length;
-    sliderRight.src = bannersRight[idxRight];
-},3000);
-</script>
-
-</body>
-</html>
+    idxLeft = (idxLeft+1)%
